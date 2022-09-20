@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Изменение</title>
+  <link rel="stylesheet"  href="/style.css"/>
+</head>
+<body>
+<div class="cardContainer">
+  <div th:each="el : ${colorInfo}" class="card">
+    <p th:text="${el.name}"></p>
+    <form th:object="${breed}" method="post" th:action="'/color/edit/' + ${el.id}" class="formWrapper">
+      <input id="1" name="name" type="text" placeholder="Цвет" th:value="${el.name}">
+      <div class="action-wrapper">
+        <input type="submit" value="Изменить" class="btn">
+        <a href="/color/" class="back">Назад</a>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

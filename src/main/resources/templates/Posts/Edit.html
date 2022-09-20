@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Изменение</title>
+  <link rel="stylesheet"  href="/style.css"/>
+</head>
+<body>
+<div class="cardContainer">
+  <div th:each="el : ${postsInfo}" class="card">
+      <h2 th:text="${el.title}"></h2>
+      <h3 th:text="${el.phone}"></h3>
+      <p th:text="${el.description}"></p>
+      <p th:text="${el.animalType.name}"></p>
+      <p th:text="${el.breedCats.name}"></p>
+      <p th:text="${el.name}"></p>
+      <p th:text="${el.places.name}"></p>
+      <p th:text="${el.color.name}"></p>
+      <p th:text="${el.description}"></p>
+      <p th:text="${el.socialWeb.name}"></p>
+      <form th:object="${posts}" method="post" th:action="'/posts/edit/' + ${el.id}" class="formWrapper">
+        <h3  th:text="${error}" style="color: red"></h3>
+        <input id="1"  name="title" type="text" placeholder="Заголовок" th:value="${el.title}">
+        <input id="2" name="description" type="text" placeholder="Описание" th:value="${el.description}">
+        <input id="5" name="phone" type="number" placeholder="Номер телефона" th:value="${el.phone}">
+        <input id="6" name="name" type="text" placeholder="Кличка" th:value="${el.name}">
+        <input id="7" name="date" type="text" placeholder="Дата" th:value="${el.date}">
+        <select  name="places">
+          <div th:each="element : ${places}">
+            <option th:text="${element.name}"></option>
+          </div>
+        </select>
+        <select  name="animalType">
+          <div th:each="element : ${animalTypes}">
+            <option th:text="${element.name}"></option>
+          </div>
+        </select>
+        <select  name="breedCats">
+          <div th:each="element : ${breedCats}">
+            <option th:text="${element.name}"></option>
+          </div>
+        </select>
+        <select  name="color">
+          <div th:each="element : ${colors}">
+            <option th:text="${element.name}"></option>
+          </div>
+        </select>
+        <select  name="socialWeb">
+          <div th:each="element : ${socialWebs}">
+            <option th:text="${element.name}"></option>
+          </div>
+        </select>
+        <div class="action-wrapper">
+          <input type="submit" value="Изменить" class="btn">
+          <a href="/posts/" class="back">Назад</a>
+        </div>
+      </form>
+  </div>
+</div>
+</body>
+</html>

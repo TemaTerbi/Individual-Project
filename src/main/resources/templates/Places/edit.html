@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Изменение</title>
+  <link rel="stylesheet"  href="/style.css"/>
+</head>
+<body>
+<div class="cardContainer">
+  <div th:each="el : ${placesInfo}" class="card">
+    <p th:text="${el.name}"></p>
+    <form th:object="${places}" method="post" th:action="'/places/edit/' + ${el.id}" class="formWrapper">
+      <input id="1" name="name" type="text" placeholder="Название места" th:value="${el.name}">
+      <div class="action-wrapper">
+        <input type="submit" value="Изменить" class="btn">
+        <a href="/places/" class="back">Назад</a>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

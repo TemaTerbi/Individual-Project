@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление</title>
+  <link rel="stylesheet"  href="/style.css"/>
+</head>
+<body>
+<div class="center">
+  <div>
+    <h3  th:text="${error}" style="color: red"></h3>
+    <form th:object="${posts}" method="post" action="/posts/add" class="formWrapper">
+      <input id="1"  name="title" type="text" placeholder="Заголовок">
+      <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div><br>
+      <input id="2" name="description" type="text" placeholder="Описание">
+      <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div><br>
+      <input id="5" name="phone" type="number" placeholder="Номер телефона">
+      <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div><br>
+      <input id="6" name="name" type="text" placeholder="Кличка">
+      <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+      <input id="7" name="date" type="text" placeholder="Дата">
+      <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div><br>
+      <select  name="userName">
+        <div th:each="element : ${users}">
+          <option th:text="${element.username}"></option>
+        </div>
+      </select>
+      <select  name="places">
+        <div th:each="element : ${places}">
+          <option th:text="${element.name}"></option>
+        </div>
+      </select>
+      <select  name="animalType">
+        <div th:each="element : ${animalTypes}">
+          <option th:text="${element.name}"></option>
+        </div>
+      </select>
+      <select  name="breedCats">
+        <div th:each="element : ${breedCats}">
+          <option th:text="${element.name}"></option>
+        </div>
+      </select>
+      <select  name="color">
+        <div th:each="element : ${colors}">
+          <option th:text="${element.name}"></option>
+        </div>
+      </select>
+      <select  name="socialWeb">
+        <div th:each="element : ${socialWebs}">
+          <option th:text="${element.name}"></option>
+        </div>
+      </select>
+      <div class="action-wrapper">
+        <input type="submit" value="Добавить" class="btn">
+      </div>
+    </form>
+  </div>
+</div>
+<div class="footerNewsAction">
+  <a href="/posts/" class="back">Назад</a>
+</div>
+</body>
+</html>

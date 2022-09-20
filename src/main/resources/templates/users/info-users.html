@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title>Users info</title>
+  <link rel="stylesheet"  href="/style.css"/>
+</head>
+<body>
+
+<div th:each="el : ${users}"> <br>
+  <p th:text="${el.username}"></p>
+  <p th:text="${el.roles}"></p> <br>
+  <a th:href="'/admin/edit/' + ${el.id}" class="btn">Редактировать роль</a> <br>
+</div> <br>
+
+<div class="footerNewsAction">
+  <a href="/places/" class="btn">Добавить место</a>
+  <a href="/type/" class="btn">Добавить тип</a>
+  <a href="/breed/" class="btn">Добавить породу</a>
+  <a href="/color/" class="btn">Добавить цвет</a>
+  <a href="/social/" class="btn">Добавить соц сеть</a>
+</div>
+
+</body>
+</html>

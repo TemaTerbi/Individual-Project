@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Подробна информация</title>
+  <link rel="stylesheet"  href="/style.css"/>
+</head>
+<body>
+<div class="cardContainer">
+  <div th:each="el : ${animal}" class="card">
+    <p th:text="${el.name}"></p>
+    <div class="cardAction">
+      <a th:href="'/type/edit/' + ${el.id}" class="btn">Изменить</a>
+      <a th:href="'/type/delete/' + ${el.id}" class="back">Удалить</a>
+    </div>
+  </div>
+</div>
+<div class="footerNewsAction">
+  <a href="/type/" class="back">Назад</a>
+</div>
+</body>
+</html>

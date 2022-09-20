@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление</title>
+  <link rel="stylesheet"  href="/style.css"/>
+</head>
+<body>
+<div class="center">
+  <div>
+    <form th:object="${breed}" method="post" action="/breed/add" class="formWrapper">
+      <input id="1" name="name" type="text" placeholder="Название места">
+      <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+      <div class="action-wrapper">
+        <input type="submit" value="Добавить" class="btn">
+      </div>
+    </form>
+  </div>
+</div>
+<div class="footerNewsAction">
+  <a href="/breed/" class="back">Назад</a>
+</div>
+</body>
+</html>
